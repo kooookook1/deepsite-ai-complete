@@ -17,6 +17,144 @@ import MY_TOKEN_KEY from "@/lib/get-cookie-name";
 
 const ipAddresses = new Map();
 
+function generateDemoHTML(prompt: string, redesignMarkdown?: string, html?: string): string {
+  // Simple demo HTML generator for testing
+  const userRequest = prompt || "Create a beautiful website";
+  
+  if (userRequest.toLowerCase().includes("login") || userRequest.toLowerCase().includes("sign in")) {
+    return `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-500 to-purple-600 min-h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded-lg shadow-2xl w-96">
+        <h2 class="text-2xl font-bold text-center mb-6 text-gray-800">Welcome Back</h2>
+        <form class="space-y-4">
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                <input type="email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your email">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                <input type="password" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your password">
+            </div>
+            <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-200">Sign In</button>
+        </form>
+        <p class="text-center text-sm text-gray-600 mt-4">Don't have an account? <a href="#" class="text-blue-500 hover:underline">Sign up</a></p>
+    </div>
+</body>
+</html>`;
+  }
+  
+  if (userRequest.toLowerCase().includes("portfolio") || userRequest.toLowerCase().includes("resume")) {
+    return `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-6 py-4">
+            <nav class="flex justify-between items-center">
+                <h1 class="text-2xl font-bold text-gray-800">John Doe</h1>
+                <div class="space-x-6">
+                    <a href="#about" class="text-gray-600 hover:text-blue-500">About</a>
+                    <a href="#projects" class="text-gray-600 hover:text-blue-500">Projects</a>
+                    <a href="#contact" class="text-gray-600 hover:text-blue-500">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container mx-auto px-6 py-12">
+        <section class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-800 mb-4">Full Stack Developer</h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">I create beautiful and functional web applications using modern technologies.</p>
+        </section>
+        
+        <section id="projects" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="h-48 bg-gradient-to-r from-blue-400 to-purple-500"></div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">Project One</h3>
+                    <p class="text-gray-600">A modern web application built with React and Node.js</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="h-48 bg-gradient-to-r from-green-400 to-blue-500"></div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">Project Two</h3>
+                    <p class="text-gray-600">E-commerce platform with advanced features</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="h-48 bg-gradient-to-r from-purple-400 to-pink-500"></div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">Project Three</h3>
+                    <p class="text-gray-600">Mobile app with cross-platform compatibility</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>`;
+  }
+  
+  // Default beautiful landing page
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-800 min-h-screen">
+    <div class="container mx-auto px-6 py-12">
+        <header class="text-center mb-16">
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 animate-pulse">
+                ✨ ${userRequest} ✨
+            </h1>
+            <p class="text-xl text-blue-100 max-w-2xl mx-auto">
+                This is a beautiful website created with AI assistance. The design is modern, responsive, and engaging.
+            </p>
+        </header>
+        
+        <main class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            <div class="bg-white/10 backdrop-blur-lg rounded-xl p-6 text-white">
+                <div class="text-4xl mb-4">🚀</div>
+                <h3 class="text-xl font-semibold mb-2">Fast Performance</h3>
+                <p class="text-blue-100">Lightning-fast loading times and smooth interactions.</p>
+            </div>
+            <div class="bg-white/10 backdrop-blur-lg rounded-xl p-6 text-white">
+                <div class="text-4xl mb-4">🎨</div>
+                <h3 class="text-xl font-semibold mb-2">Beautiful Design</h3>
+                <p class="text-blue-100">Modern and elegant design that captures attention.</p>
+            </div>
+            <div class="bg-white/10 backdrop-blur-lg rounded-xl p-6 text-white">
+                <div class="text-4xl mb-4">📱</div>
+                <h3 class="text-xl font-semibold mb-2">Responsive</h3>
+                <p class="text-blue-100">Works perfectly on all devices and screen sizes.</p>
+            </div>
+        </main>
+        
+        <footer class="text-center">
+            <button class="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition duration-300 transform hover:scale-105">
+                Get Started
+            </button>
+        </footer>
+    </div>
+</body>
+</html>`;
+}
+
 export async function POST(request: NextRequest) {
   const authHeaders = await headers();
   const userToken = request.cookies.get(MY_TOKEN_KEY())?.value;
@@ -109,31 +247,42 @@ export async function POST(request: NextRequest) {
     (async () => {
       let completeResponse = "";
       try {
-        const client = new InferenceClient(token);
-        const chatCompletion = client.chatCompletionStream(
-          {
-            model: selectedModel.value,
-            provider: selectedProvider.id as any,
-            messages: [
-              {
-                role: "system",
-                content: INITIAL_SYSTEM_PROMPT,
-              },
-              {
-                role: "user",
-                content: redesignMarkdown
-                  ? `Here is my current design as a markdown:\n\n${redesignMarkdown}\n\nNow, please create a new design based on this markdown.`
-                  : html
-                  ? `Here is my current HTML code:\n\n\`\`\`html\n${html}\n\`\`\`\n\nNow, please create a new design based on this HTML.`
-                  : prompt,
-              },
-            ],
-            max_tokens: selectedProvider.max_tokens,
-          },
-          billTo ? { billTo } : {}
-        );
+        // Check if we have a valid token, if not use demo mode
+        if (!token || token === "hf_demo_token_for_testing") {
+          // Demo mode - generate a simple HTML response
+          const demoHTML = generateDemoHTML(prompt, redesignMarkdown, html);
+          const chunks = demoHTML.split('');
+          
+          for (const chunk of chunks) {
+            await writer.write(encoder.encode(chunk));
+            await new Promise(resolve => setTimeout(resolve, 10)); // Simulate streaming
+          }
+        } else {
+          const client = new InferenceClient(token);
+          const chatCompletion = client.chatCompletionStream(
+            {
+              model: selectedModel.value,
+              provider: selectedProvider.id as any,
+              messages: [
+                {
+                  role: "system",
+                  content: INITIAL_SYSTEM_PROMPT,
+                },
+                {
+                  role: "user",
+                  content: redesignMarkdown
+                    ? `Here is my current design as a markdown:\n\n${redesignMarkdown}\n\nNow, please create a new design based on this markdown.`
+                    : html
+                    ? `Here is my current HTML code:\n\n\`\`\`html\n${html}\n\`\`\`\n\nNow, please create a new design based on this HTML.`
+                    : prompt,
+                },
+              ],
+              max_tokens: selectedProvider.max_tokens,
+            },
+            billTo ? { billTo } : {}
+          );
 
-        while (true) {
+          while (true) {
           const { done, value } = await chatCompletion.next();
           if (done) {
             break;
@@ -174,6 +323,7 @@ export async function POST(request: NextRequest) {
                 }
               }
             }
+          }
           }
         }
       } catch (error: any) {
