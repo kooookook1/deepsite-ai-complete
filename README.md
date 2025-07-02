@@ -181,7 +181,7 @@ deepsite-ai-complete/
 
 ## 🙏 شكر وتقدير | Acknowledgments
 
-- **المشروع الأصلي**: [DeepSite by enzostvs](https://huggingface.co/spaces/enzostvs/deepsite)
+- **المشروع الأصلي**: [DeepSite by enzostvs](https://t.me/c4ccz)
 - **Hugging Face**: لتوفير نماذج الذكاء الاصطناعي
 - **Next.js Team**: للإطار الرائع
 - **Vercel**: للاستضافة والنشر
